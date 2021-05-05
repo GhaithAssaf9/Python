@@ -1,0 +1,56 @@
+C:\Users\academy\Desktop>
+C:\Users\academy\Desktop>cd python_stack
+
+C:\Users\academy\Desktop\python_stack>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 0A17-2DE9
+
+ Directory of C:\Users\academy\Desktop\python_stack
+
+05/05/2021  09:46 AM    <DIR>          .
+05/05/2021  09:46 AM    <DIR>          ..
+05/05/2021  09:39 AM    <DIR>          django
+05/05/2021  10:12 AM    <DIR>          my_enviroment
+05/05/2021  09:38 AM    <DIR>          _python
+               0 File(s)              0 bytes
+               5 Dir(s)  159,317,889,024 bytes free
+
+C:\Users\academy\Desktop\python_stack>cd my_enviroment
+
+C:\Users\academy\Desktop\python_stack\my_enviroment>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 0A17-2DE9
+
+ Directory of C:\Users\academy\Desktop\python_stack\my_enviroment
+
+05/05/2021  10:12 AM    <DIR>          .
+05/05/2021  10:12 AM    <DIR>          ..
+05/05/2021  10:13 AM             2,301 practicePip.txt
+05/05/2021  09:45 AM    <DIR>          py_Env
+05/05/2021  09:53 AM                46 requirements.txt
+               2 File(s)          2,347 bytes
+               3 Dir(s)  159,329,222,656 bytes free
+
+C:\Users\academy\Desktop\python_stack\my_enviroment>cd..
+
+C:\Users\academy\Desktop\python_stack>cd django
+
+C:\Users\academy\Desktop\python_stack\django>fir
+'fir' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\academy\Desktop\python_stack\django>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 0A17-2DE9
+
+ Directory of C:\Users\academy\Desktop\python_stack\django
+
+05/05/2021  09:39 AM    <DIR>          .
+05/05/2021  09:39 AM    <DIR>          ..
+05/05/2021  09:38 AM    <DIR>          django_fullstack
+05/05/2021  09:38 AM    <DIR>          django_fundamentals
+05/05/2021  09:38 AM    <DIR>          django_orm
+               0 File(s)              0 bytes
+               5 Dir(s)  159,328,600,064 bytes free
+
+C:\Users\academy\Desktop\python_stack\django>
