@@ -1,0 +1,68 @@
+Microsoft Windows [Version 10.0.18362.356]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\academy>cd desktop
+
+C:\Users\academy\Desktop>cd python_stack
+
+C:\Users\academy\Desktop\python_stack>pip list
+Package    Version
+---------- -------
+Django     2.2.4
+pip        21.1.1
+pytz       2021.1
+setuptools 56.0.0
+sqlparse   0.4.1
+
+C:\Users\academy\Desktop\python_stack>pip3 list
+Package    Version
+---------- -------
+Django     2.2.4
+pip        21.1.1
+pytz       2021.1
+setuptools 56.0.0
+sqlparse   0.4.1
+
+C:\Users\academy\Desktop\python_stack>cd my_enviroment
+
+C:\Users\academy\Desktop\python_stack\my_enviroment>pip install Django==2.2.4
+Requirement already satisfied: Django==2.2.4 in c:\users\academy\appdata\local\programs\python\python39\lib\site-packages (2.2.4)
+Requirement already satisfied: sqlparse in c:\users\academy\appdata\local\programs\python\python39\lib\site-packages (from Django==2.2.4) (0.4.1)
+Requirement already satisfied: pytz in c:\users\academy\appdata\local\programs\python\python39\lib\site-packages (from Django==2.2.4) (2021.1)
+
+C:\Users\academy\Desktop\python_stack\my_enviroment>pip freeze
+Django==2.2.4
+pytz==2021.1
+sqlparse==0.4.1
+
+C:\Users\academy\Desktop\python_stack\my_enviroment>pip list
+Package    Version
+---------- -------
+Django     2.2.4
+pip        21.1.1
+pytz       2021.1
+setuptools 56.0.0
+sqlparse   0.4.1
+
+C:\Users\academy\Desktop\python_stack\my_enviroment>cd ..
+
+C:\Users\academy\Desktop\python_stack>cd..
+
+C:\Users\academy\Desktop>pip uninstall Django
+Found existing installation: Django 2.2.4
+Uninstalling Django-2.2.4:
+  Would remove:
+    c:\users\academy\appdata\local\programs\python\python39\lib\site-packages\django-2.2.4.dist-info\*
+    c:\users\academy\appdata\local\programs\python\python39\lib\site-packages\django\*
+    c:\users\academy\appdata\local\programs\python\python39\scripts\django-admin.exe
+    c:\users\academy\appdata\local\programs\python\python39\scripts\django-admin.py
+Proceed (y/n)? pip show Django
+Your response ('pip show django') was not one of the expected responses: y, n
+Proceed (y/n)? y
+  Successfully uninstalled Django-2.2.4
+
+C:\Users\academy\Desktop>pip show Django
+WARNING: Package(s) not found: Django
+
+C:\Users\academy\Desktop>
+
