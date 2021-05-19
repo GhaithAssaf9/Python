@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <article>
+        <h1>Welcome To The Great Number Game!</h1>
+        <br>
+        <h3>I'm thinking of a number between 1 & 100</h3>
+        <h3>Take a guess!</h3>
+        <br>
+        <div>
+            <h1> {{ request.session.x }} </h1>
+        </div>
+        <br>
+        <form action="/submitt" method="POST">
+            {% csrf_token %}
+            <input type="number" name="num_v" id="num">
+            <input type="submit" name="sub" id="sub">
+        </form>
+    </article>
+    <style>
+        *{
+            margin: 0px auto;
+        }
+        body {
+            justify-content: center;
+            justify-items: center;
+        }
+        article {
+            background-color: lightblue;
+            border: 5px ;
+            border-radius: 10px;
+            justify-items: center;
+            justify-self: center;
+            justify-content: center;
+            width: max-content;
+            padding: 30px;
+            margin-top: 50px;
+            margin-left: 500px;
+        }
+        div {
+            padding: 20px;
+        }
+        div h1 {
+            color: brown;
+            width: max-content;
+        
+        }
+
+
+    </style>
+</body>
+</html>
