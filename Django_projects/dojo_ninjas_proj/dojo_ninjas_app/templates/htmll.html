@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Dojos & Ninjas with Template</title>
+    <style>
+        article {
+            display: flex;
+        }
+        section {
+            flex: 1;
+            margin: 20px 100px;
+        }
+        main {
+            margin-left: 600px;
+            width: max-content;
+            background-color: antiquewhite;
+            padding: 10px 50px;
+        }
+        body {
+            padding-bottom: 100px;
+            background-color: goldenrod;
+        }
+    </style>
+</head>
+<body>
+    <article>
+        <section id="ww">
+            <h2>Add a Dojo</h2>
+            <form action="dojo" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Name</label>
+                    <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="Dojo's Name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">City</label>
+                    <input type="text" name="city" class="form-control" id="exampleFormControlInput1" placeholder="Dojo's City">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">State</label>
+                    <input type="text" name="state" class="form-control" id="exampleFormControlInput1" placeholder="Dojo's State">
+                </div>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+        </section>
+        <section id="qq">
+            <h2>Add a Ninja</h2>
+            <form action="ninja" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">First Name</label>
+                    <input type="text" class="form-control" name="first_name" id="exampleFormControlInput1" placeholder="first_name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Last Name</label>
+                    <input type="text" class="form-control" name="last_name" id="exampleFormControlInput1" placeholder="last_name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Dojo</label>
+                    <select class="form-control" name="select" id="exampleFormControlSelect1" placeholder="Select a Dojo">
+                    <option selected>Select a Dojo ...</option>
+                        {% for x in dojo %}
+                            <option>{{ x.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+        </section>
+    </article>
+    <hr>
+    <hr>
+    <main>
+        <h2>All The Ninjas</h2>
+        <ul>
+            {% for d in dojo %}
+                <li> {{ d.name }} 
+                    <ul>
+                        {% for n in d.ninjas.all %}
+                            <li><em>{{ n.first_name }} {{ n.last_name }}</em></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+        <br><br>
+        <form action="reset">
+            <button type="submit" class="btn btn-primary">Reset</button>
+        </form>
+    </main>
+</body>
+</html>
