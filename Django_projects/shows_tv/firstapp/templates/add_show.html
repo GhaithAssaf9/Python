@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style></style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add a New Show</h1>
+    <form action="/shows" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="add">
+        <div class="form-group row">
+            <label for="example-text-input">Title</label>
+            <div class="col-10">
+                <input class="form-control" name="title" type="text" placeholder="show title .." id="example-text-input">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">Network</label>
+            <div class="col-10">
+                <input class="form-control" name="network" type="text" placeholder="show network .." id="example-text-input">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-datetime-local-input" class="col-2 col-form-label">Release Date</label>
+            <div class="col-10">
+                <input class="form-control" name="date" type="datetime-local" id="example-datetime-local-input">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleTextarea">Description ..</label>
+            <textarea class="form-control" name="desc" id="exampleTextarea" rows="3"></textarea>
+        </div>
+        <br><br>
+        <button type="submit" class="btn btn-primary">Add ot Shows</button>
+    </form>
+    <br><br>
+    <a href="/shows">Go Back >></a>
+</body>
+</html>
