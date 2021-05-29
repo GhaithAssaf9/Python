@@ -4,17 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: rosybrown;
+            padding: 40px;
+        }
+        header {
+            height: 100px;
+
+        }
+        a {
+            text-align: right;
+            float: right;
+            color: red;
+        }
+        h4 {
+            color: seagreen;
+        }
+    </style>
     <title>Success</title>
 </head>
 <body>
-    <h1> Hello {{ request.session.fname }} {{ request.session.lname }}</h1>
-    {% if messages %}
-        <ul class="messages">    
-            {% for message in messages %}    
-                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+    <header>
+        <a href="/log_out"> Log_out </a>
+    </header>
+    <article>
+        <form action="/add_post" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="post">
+            <div class="form-group">
+                <label for="exampleTextarea">Post a Message >></label>
+                <textarea class="form-control" name="post" id="exampleTextarea" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Post a Message</button>    
+        </form>
+            {% for x in all_posts %}
+            <h4> {{ x.user.first_name }} {{ x.user.last_name }} - {{ x.created_at }} {% if x.user.id == request.session.userid %} <a href="/delete_p/{{x.id}}"> Delete </a> {% endif %} </h4>
+            <p class="post"> {{x.post}} </p>
+            <!-- <a href="/view_comments/{{x.id}}"> show all comments ... </a> -->
+            <ul>
+            {% for y in x.comments.all %}
+                <li> {{ y.comment }} . {% if y.user.id == request.session.userid %} <a href="/delete_c/{{y.id}}"> Delete </a> {% endif %} </li>
             {% endfor %}
         </ul>
-    {% endif %}
-    <a href="/log_out"> Log_out </a>
+        <form action="/add_comment/{{x.id}}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="comment">
+            <div class="form-group">
+                <label for="exampleTextarea">Post a Comment >></label>
+                <textarea class="form-control" name="comment" id="exampleTextarea" rows="1"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Post a comment</button>
+        </form>
+        {% endfor %}
+    </article>
 </body>
 </html>
