@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: lightgray;
+            padding: 40px;
+        }
+        header {
+            height: 100px;
+
+        }
+        a {
+            text-align: right;
+            float: right;
+            color: white;
+        }
+        h4 {
+            color: black;
+        }
+        button{
+            float: right;
+        }
+        #exampleTextarea{
+            width: 900px;
+        }
+        #buto{
+            background-color: red;
+            box-shadow: 5px black;
+        }
+        #butoo{
+            box-shadow: 5px black;
+            background-color: blue;
+            color: white;
+
+        }
+        #aa{
+            text-decoration: underline;
+            color: blue;
+        }
+        #saa{
+            display: block;
+            align-items: center;
+            color: blue;
+            float: left;
+        }
+       #count{
+           float: right;
+           margin-right: 550px;
+       }
+
+    </style>
+    <title>Success</title>
+</head>
+<body>
+    <header>
+        <h1>Hi {{ user.first_name }} {{ user.last_name }}</h1>
+        <a id="aa" href="/log_out"> Log_out </a>
+        
+    </header>
+    <article>
+        
+        <form action="/add_post" method="POST">
+
+            {% csrf_token %}
+            <input type="hidden" name="post">
+            <div class="form-group">
+                
+                <textarea class="form-control" name="post" id="exampleTextarea" rows="1"></textarea>
+            </div>
+            <button type="submit"  id="butoo">Add Though!</button>  
+            
+        </form>
+
+        {% if messages %}
+                <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+                </ul>
+        {% endif %}
+        <br><br>
+        <hr>
+            {% for x in all_posts %}
+            <br><br>
+            <h4> {{ x.user.first_name }} {{ x.user.last_name }} {% if x.user.id == request.session.userid %} <button id="buto"><a href="/delete_p/{{x.id}}"> Delete </a></button> {% endif %} </h4>
+            <p class="post"> <textarea class="form-control" name="post" id="exampleTextarea" rows="2">{{x.post}} </textarea> </p>
+            <a id="saa" href="/details/{{x.id}}">details</a> <span id="count"> {{x.users_like.all|length}} people like this</span>
+            {% endfor %}
+    </article>
+</body>
+</html>

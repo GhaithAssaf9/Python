@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: lightgray;
+        }
+        #false {
+            color: red;
+        }
+        article {
+            display: flex;
+        }
+        section {
+            flex: 1;
+            padding: 20px 50px;
+        }
+        #exampleFormControlInput1{
+            width: 360px;
+        }
+        
+
+    </style>
+    <title>Log_in</title>
+</head>
+<body>
+    <article>
+        <section>
+            <h1>Register</h1>
+            <form action="/register" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="register">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">First_Name</label>
+                    <input type="text" name="first_name" class="form-control" id="exampleFormControlInput1" placeholder="First Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Last_Name</label>
+                    <input type="text" name="last_name" class="form-control" id="exampleFormControlInput1" placeholder="Last Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Email</label>
+                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Password</label>
+                    <input type="password" name="password" class="form-control" id="exampleFormControlInput1" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Confirm-Password</label>
+                    <input type="password" name="cpassword" class="form-control" id="exampleFormControlInput1" placeholder="Password" required confirm>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign_up</button>
+            </form>
+            {% if messages %}
+                <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </section>
+        <section>
+            <br><br><br><br><br>
+            <h1>Log_in</h1>
+            <form action="/log_in" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="login">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Email</label>
+                    <input type="email" name="emaill" class="form-control" id="exampleFormControlInput1" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Password</label>
+                    <input type="password" name="passwordd" class="form-control" id="exampleFormControlInput1" placeholder="Password" required>
+                </div>
+                <p id="false"> {{ request.session.false }} </p>
+                <button type="submit" class="btn btn-primary">Log_in</button>
+            </form>
+            
+        </section>
+    </article>
+</body>
+</html>

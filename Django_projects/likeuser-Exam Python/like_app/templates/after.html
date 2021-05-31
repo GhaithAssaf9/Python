@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Document</title>
+    <style>
+        body{
+            background-color: lightgray;
+        }
+        #exampleTextarea{
+            width: 600px;
+        }
+        button{
+            float: right;
+            margin-right: 1000px;
+        }
+        #f{
+            background-color: blue;
+        }
+        h3{
+            float: right;
+        }
+        h4{
+            margin-top: 50px;
+        }
+
+    </style>
+</head>
+
+    <body>
+        <article>
+            <h3><a href="/success">Dashboard</a> | <a href="/log_out">Log Out</a></h3>
+        </article>
+        <header>
+            <article>
+                <h4> {{ post.user.first_name }} says:</h4>
+                    <div class="pp">
+                        <p class="post"> <textarea class="form-control" name="post" id="exampleTextarea" rows="2">{{post.post}}</textarea> </p>
+                        {% if post not in user.post_like.all %} 
+                            <form action="/like/{{post.id}}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="like">
+                                <button type="submit" class="btn btn-success">Like</button>
+                            </form>
+                        {% else %}
+                            <form action="/dislike/{{post.id}}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="dislike">
+                                <button type="submit" class="btn btn-danger">Unlike</button>
+                            </form>
+                        {% endif %}
+                    </div>
+            </article>
+           
+        </header>
+        <section>
+            <h4>People who like this thought:</h4>
+            <br><br>
+            <table class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for x in post.users_like.all %}
+                    <tr>
+                        <td> {{ x.first_name }} </td>
+                        <td> {{ x.last_name }} </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    
+    
+</body>
+</html>
